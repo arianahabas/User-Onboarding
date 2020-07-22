@@ -144,14 +144,8 @@ export default function App () {
         />
     </FormStyles>
     <PlayerCard className='playerCard'>
-      {
-        players.map(player => {
-          return (
-            <Players key={player.id} details={player} />
-          )
-        })
-      }
-      </PlayerCard>
+        <Players />
+    </PlayerCard>
     </AppStyles>
   )
 }

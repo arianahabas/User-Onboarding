@@ -10,24 +10,23 @@ const Card = styled.div`
 `
 
 
-export default function Player ({props}) {
-    const { details } = props
-    
-    if(!details){
+export default function Player ({ props }) { 
+    if(!props){
         return <h3>not good enough</h3>
     }
     
     return (  
         <Card className='card'>
-            <h2>Name: {details.name}</h2>
-            <p>Email: {details.email}</p>
-            <p>Jersey Number: {details.number}</p>
+            <h2>Name: {props.name}</h2>
+            <p>Email: {props.email}</p>
+            <p>Jersey Number: {props.number}</p>
+            <p>Password: {props.password}</p>
             {
-            !!details.position && !!details.position.length &&
+            !!props.position && !!props.position.length &&
             <div>
             Positions:
             <ul>
-                {details.position.map((like, idx) => <li key={idx}>{like}</li>)}
+                {props.position.map((like, idx) => <li key={idx}>{like}</li>)}
             </ul>
             </div>
             }

@@ -44,7 +44,7 @@ export default function PlayerForm (props) {
           id='emailInput'
           name='email'
           type='email'
-          maxLength='20'
+          maxLength='25'
           placeholder='Enter Email'
           value={values.email}
           onChange={onInputChange}
@@ -104,12 +104,13 @@ export default function PlayerForm (props) {
             </label>
           </div>
           <br/>
-          <button disabled={disabled}>Lets GO!!!</button> 
+          <button>Lets GO!!!</button> 
           <div className='errors'>
             <div>{errors.name}</div>
             <div>{errors.email}</div>
             <div>{errors.number}</div>
             <div>{errors.position}</div>
+            <div>{errors.password}</div>
           </div>
         </form>
         </div>

@@ -12,6 +12,9 @@ const formSchema = yup.object().shape({
     number: yup
     .string()
     .required("Number is Required"),
+    password:yup
+    .string()
+    .required("Password is Required"),
 })
 
 export default formSchema
