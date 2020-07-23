@@ -9,25 +9,28 @@ export default function PlayerForm (props) {
       disabled,
       errors, 
     } = props 
+    
+    const onSubmit = evt => {
+        evt.preventDefault()
+        submit()
+      }
+      
+      const onCheckboxChange = evt => {
+        const { name, checked } = evt.target
+        checkboxChange(name, checked)
+      }
 
     const onInputChange = evt => {
       const { name, value } = evt.target
       inputChange(name, value)
     }
 
-    const onSubmit = evt => {
-        evt.preventDefault()
-        submit()
-      }
-    const onCheckboxChange = evt => {
-      const { name, checked } = evt.target
-      checkboxChange(name, checked)
-    }
 
     return (
         <div>
         <form onSubmit = {onSubmit}>
             <h1>Join the Team! 🏀</h1>
+
           <label htmlFor='nameInput'></label>
           <input
           id='nameInput'
@@ -39,6 +42,7 @@ export default function PlayerForm (props) {
           onChange={onInputChange}
           />
           <br/>
+
           <label htmlFor='emailInput'></label>
           <input
           id='emailInput'
@@ -50,6 +54,7 @@ export default function PlayerForm (props) {
           onChange={onInputChange}
           />
           <br/>
+
           <label htmlFor='numberInput'></label>
           <input
           id='numberInput'
@@ -61,6 +66,7 @@ export default function PlayerForm (props) {
           onChange={onInputChange}
           />
           <br/>
+
           <label htmlFor='passwordInput'></label>
           <input
           id='passwordInput'
@@ -104,7 +110,9 @@ export default function PlayerForm (props) {
             </label>
           </div>
           <br/>
+
           <button>Lets GO!!!</button> 
+          
           <div className='errors'>
             <div>{errors.name}</div>
             <div>{errors.email}</div>

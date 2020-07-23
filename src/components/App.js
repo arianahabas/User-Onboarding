@@ -28,7 +28,7 @@ const PlayerCard= styled.div`
   border: 4px dashed  #EEF0F2;
 `
 //INTITIAL STATES//
-const initialPlayersList = []
+
 const initialDisabled = true
 const initialFormValues = {
   ///// TEXT INPUTS /////
@@ -49,6 +49,7 @@ const initialFormErrors = {
   number: '',
   password: '',
 }
+const initialPlayersList = []
 
 export default function App () {
   //STATES//
@@ -58,6 +59,7 @@ export default function App () {
   const [disabled, setDisabled] = useState(initialDisabled)    
   
   //HELPER FUNCTIONS//
+  //to [get] all players from API//
   const getPlayers = () => {
     axios.get('https://reqres.in/api/users')
     .then(res => {
@@ -67,7 +69,7 @@ export default function App () {
       debugger
     })
   }
-
+  //to [post] newPlayer to API///
   const postNewPlayer = newPlayer => {
     axios.post('https://reqres.in/api/users', newPlayer)
     .then(res => {
@@ -120,6 +122,7 @@ export default function App () {
       }
       postNewPlayer(newPlayer)
     }
+
     //SIDE EFFECTS//
     useEffect(() => {
       getPlayers()
@@ -133,6 +136,7 @@ export default function App () {
 
   return(
     <AppStyles className='App'>
+
       <FormStyles className='form'>
         <PlayerForm
         values={formValues}
@@ -142,10 +146,19 @@ export default function App () {
         disabled={disabled}
         errors={formErrors}
         />
-    </FormStyles>
-    <PlayerCard className='playerCard'>
-        <Players />
-    </PlayerCard>
+      </FormStyles>
+      <PlayerCard className='playerCard'>
+      {
+      players.data && players.data.map(p => {
+        return (
+          <Players
+            key={p.id}
+            details={p}
+          />
+        )
+      })
+      }
+      </PlayerCard>
     </AppStyles>
   )
 }
