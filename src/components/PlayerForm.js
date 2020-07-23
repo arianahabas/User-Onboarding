@@ -1,4 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const ErrorStyles = styled.div`
+  color:red;
+`
 
 export default function PlayerForm (props) {
     const { 
@@ -112,14 +117,15 @@ export default function PlayerForm (props) {
           <br/>
 
           <button>Lets GO!!!</button> 
-          
-          <div className='errors'>
+          <br/>
+          <br/>
+          <ErrorStyles className='errors'>
             <div>{errors.name}</div>
             <div>{errors.email}</div>
             <div>{errors.number}</div>
             <div>{errors.position}</div>
             <div>{errors.password}</div>
-          </div>
+          </ErrorStyles>
         </form>
         </div>
     )

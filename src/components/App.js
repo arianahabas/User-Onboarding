@@ -63,7 +63,7 @@ export default function App () {
   const getPlayers = () => {
     axios.get('https://reqres.in/api/users')
     .then(res => {
-      setPlayers(res.data)
+      setPlayers(res.data.data)
     })
     .catch(err =>{
       debugger
@@ -73,7 +73,8 @@ export default function App () {
   const postNewPlayer = newPlayer => {
     axios.post('https://reqres.in/api/users', newPlayer)
     .then(res => {
-      setPlayers([res.data, ...players])
+      debugger
+      setPlayers([ ...players, res.data])
       setFormValues(initialFormValues)
     })
     .catch(err =>{
@@ -149,7 +150,7 @@ export default function App () {
       </FormStyles>
       <PlayerCard className='playerCard'>
       {
-      players.data && players.data.map(p => {
+      players.map(p => {
         return (
           <Players
             key={p.id}
