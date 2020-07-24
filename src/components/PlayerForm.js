@@ -116,7 +116,7 @@ export default function PlayerForm (props) {
           </div>
           <br/>
 
-          <button>Lets GO!!!</button> 
+          <button disabled={disabled}>Lets GO!!!</button> 
           <br/>
           <br/>
           <ErrorStyles className='errors'>

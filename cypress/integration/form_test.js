@@ -34,13 +34,15 @@ describe('Player Form Tests', function(){
      })
 
      it('Check to see if a user can submit the form data', () => {
-        cy.get('button').click()
+      cy.get('#numberInput').type('1')
+      cy.get('button').click()
      })
 
      it('Check for form validation if an input is left empty', () => {
         cy.get('#nameInput').should('have.value', '')
         cy.get('#emailInput').should('have.value', '')
         cy.get('#passwordInput').should('have.value', '')
+        cy.get('button').should('be.disabled')
      })
 
 })
